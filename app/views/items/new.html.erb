@@ -1,0 +1,69 @@
+
+<div class="row">
+		<%= form_for(@item, html: {method: :post, class: "form-horizontal"}) do |f| %>
+<h2>新規作品</h2>
+<div class="col-xs-4">
+			<!-- 画像のみ：プレビューまだです。 -->
+		 <div class="field">
+		   <%= f.label :img, "作品画像" %>
+		   <%= f.attachment_field :img, class: "img" %>
+	     </div>
+
+	     <div class="col-sm-8">
+	     	<div class="form-group">
+			 	<%= f.label :name, "作品名", class: "col-sm-2 control-label" %>
+			 	<div class="col-sm-6">
+			 		<%= f.text_field :name, class: "form-control name" %>
+			 	</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :artist_name, "応援する人の名前", class: "col-sm-2 control-label" %>
+				<div class="col-sm-6">
+					<%= f.text_field :artist_name, class: "form-control artist_name" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :explanation, "作品説明", class: "col-sm-2 control-label" %>
+				<div class="col-sm-6">
+					<%= f.text_field :explanation, class: "form-control explanation" %>
+				</div>
+			</div>
+
+			<p>タグ</p>
+
+			<div class="form-group">
+				<div class="dropdown">
+				 	<%= f.label :genre, "ジャンル", class: "col-sm-2 control-label" %>
+				 	<div class="col-sm-6">
+		        		<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+		        	</div>
+	       		</div>
+		    </div>
+				
+			<div class="form-group">
+				<%= f.label :distribute_place, "配布場所", class: "col-sm-2 control-label" %>
+				<div class="col-sm-6">
+					<%= f.text_field :distribute_place, class: "form-control distribute_place" %>
+				</div>
+			</div>
+
+			<!-- まだ設定してない -->
+			<p>配布日時</p>
+
+			<div class="form-group">
+	        	<div class="dropdown">
+		         　	<%= f.label :status, "公開設定", class: "col-sm-2 control-label" %>
+		         	<div class="col-sm-6">
+		          		<%= f.select :status, [["公開", true],["未公開", false]], include_blank: "選択して下さい" %>
+		          	</div>
+	         	</div>
+	        </div>
+
+			</div>
+
+	     </div>
+</div>
+  <% end %>
+</div>
