@@ -1,2 +1,36 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="row">
+  <h2><%= @item.name %></h2>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+			<%= attachment_image_tag(@item, :img, :fill, 300, 300) %>
+	</div>
+	<div class="col-xs-7">
+		<%= @item.explanation %>
+
+		<p>tag</p>
+
+        <p>応援する人の名前</p>
+		<%= @item.artist_name %>
+
+		<p>ジャンル名</p>
+		<%= @item.genre.name %>
+
+		<p>配布場所</p>
+		<%= @item.distribute_place %>
+
+		<p>配布日時</p>
+		<%= @item.distribute_date %>
+
+    </div>
+    <div class="col-xs-4">
+    	<%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
+    </div>
+
+    <div class="col-offset-xs-2 col-xs-3">
+    	<%= link_to "予約状況を確認する", root_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-xs-3">
+    	<%= link_to "予約する", root_path, class: "btn btn-primary" %>
+    </div>
+</div>
