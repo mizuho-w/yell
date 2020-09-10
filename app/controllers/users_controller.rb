@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def myitem
+  	@user = User.find(params[:id])
+  	@items = Item.where(user_id: current_user.id)
   end
 
   def edit

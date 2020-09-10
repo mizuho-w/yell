@@ -1,0 +1,34 @@
+<div class="row">
+	   <div class="col-3">
+	   	<table class="table">
+			<tr>
+				<td><%= attachment_image_tag(@item, :img, :fill, 200, 200) %></td>
+				</tr><br>
+			<tr>
+				<td><%= @item.name %></td>
+			</tr><br>
+			<tr>
+				<td>予約総数:<%= @item.reservations.count %></td>
+			</tr>
+        </table>
+	</div>
+	<div class="co-8">
+		<table class="table">
+			<% @reservations.each do |reservation| %>
+			<tr>
+				<td><%= reservation.user.name %></td>
+
+			<!-- ステータスの更新（同期） -->
+			<%= form_for(reservation, url:reservation_path, html: {method: :patch}) do |f| %>
+				<td><%= f.select :status, [["配布済み", true],["未配布", false]] %></td>
+				<td><%= f.submit "更新", class:"btn btn-info" %></td>
+			</tr>
+			<% end %>
+			<!-- ここまで -->
+
+				<td><%= link_to "削除", reservation_path(reservation), method: :delete, class:"btn btn-danger" %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

@@ -2,10 +2,11 @@ class CreateReservations < ActiveRecord::Migration[5.2]
   def change
     create_table :reservations do |t|
 
-    	t.integer :customer_id, null:false
+    	t.integer :user_id, null:false
+    	t.integer :item_id, null:false
     	t.string :receipt_date
     	t.text :remark
-    	t.integer :status, null:false, default: false
+    	t.boolean :status, null:false, default: false
 
       t.timestamps
     end

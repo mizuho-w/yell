@@ -2,10 +2,10 @@
   <h2><%= @item.name %></h2>
 </div>
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-4">
 			<%= attachment_image_tag(@item, :img, :fill, 300, 300) %>
 	</div>
-	<div class="col-xs-7">
+	<div class="col-7">
 		<%= @item.explanation %>
 
 		<p>tag</p>
@@ -23,14 +23,16 @@
 		<%= @item.distribute_date %>
 
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
     	<%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
     </div>
 
-    <div class="col-offset-xs-2 col-xs-3">
-    	<%= link_to "予約状況を確認する", root_path, class: "btn btn-primary" %>
+    <div class="offset-2 col-3">
+    	<%= link_to "予約状況を確認する", reserve_user_path(@item.id), class: "btn btn-primary" %>
     </div>
-    <div class="col-xs-3">
-    	<%= link_to "予約する", root_path, class: "btn btn-primary" %>
+    <div class="col-3">
+        <%= form_for(@reservation, url:reservation_path, html: {method: :post}) do |f| %>
+        <%= f.submit "予約する", class: "btn btn-primary" %>
+        <% end %>
     </div>
 </div>

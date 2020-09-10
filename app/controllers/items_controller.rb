@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def search
