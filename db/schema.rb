@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_171514) do
+ActiveRecord::Schema.define(version: 2020_09_10_122047) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 2020_09_08_171514) do
     t.string "img_id"
     t.string "distribute_place"
     t.datetime "distribute_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservatin_informations", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "receipt_date"
+    t.text "remark"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

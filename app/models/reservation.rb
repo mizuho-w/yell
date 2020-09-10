@@ -1,8 +1,4 @@
-class Item < ApplicationRecord
-	belongs_to :genre
+class Reservation < ApplicationRecord
 	belongs_to :user
-
 	has_many :reservation_informations, dependent: :destroy
-
-	attachment :img
 end

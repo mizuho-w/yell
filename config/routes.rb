@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'reservation_informations/index'
   resources :genres, only: [:index, :edit, :new, :update, :create, :destroy]
 
   root 'homes#top'

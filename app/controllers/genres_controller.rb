@@ -28,10 +28,6 @@ class GenresController < ApplicationController
   	end
   end
 
-  def genre
-    @genres = Genre.all
-  end
-
     private
   def genre_params
   	params.require(:genre).permit(:name, :is_active)
