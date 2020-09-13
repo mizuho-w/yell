@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users
+
+  get 'relationships/follower/:follow_id' => 'relationships#follower', as: 'follower'
+  get 'relationships/following/:follow_id' => 'relationships#following', as: 'following'
+
   get 'reservations/reserve_user/:id' => 'reservations#reserve_user', as:'reserve_user'
   get 'reservations/myitem/:id' => 'reservations#myitem', as:'reserve_myitem'
   resources :reservations, only:[:destroy, :update]
@@ -14,7 +20,9 @@ Rails.application.routes.draw do
 
   get 'users/mypage/:id' => 'users#mypage', as:'mypage'
   get 'users/myitem/:id' => 'users#myitem', as:'myitem'
-  devise_for :users
+
+  resources :relationships, only: [:create, :destroy]
+
   resources :users, only: [:edit, :update, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

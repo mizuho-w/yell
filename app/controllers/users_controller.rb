@@ -10,7 +10,18 @@ class UsersController < ApplicationController
   end
 
   def edit
+  	@user = current_user
+  end
+
+  def update
   	@user = User.find(params[:id])
+  	if @user.update(user_params)
+  		flash[:notice] = "会員情報を更新しました。"
+  		redirect_to mypage_path(@user)
+  	else
+  		flash[:notice] = "会員情報の更新に失敗しました。"
+  		render :edit
+  	end
   end
 
 private

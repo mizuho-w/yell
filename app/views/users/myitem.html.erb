@@ -1,6 +1,4 @@
-<div class="container">
-	
-	<div class="row">
+<div class="row">
 		<div class="col-xs-3">
 			<%= render 'users/profile', user: current_user %>
 		</div>
@@ -8,16 +6,13 @@
 		<div class="col-xs-9">
 			<h2>投稿作品</h2>
 		  <div class="post_items_each">
-				<% @items.each do |i| %>
+				<% @items.each do |item| %>
 			<div class="post_items">
-				<%= link_to item_path(i) do %>
-				<%=attachment_image_tag(i,:img ,:fill,300,300,fallback:"noimg.jpg",size:"240x240") %>
+				<%= link_to item_path(item) do %>
+				<%=attachment_image_tag(item,:img ,:fill,300,300,fallback:"noimg.jpg",size:"240x240") %>
 				<% end %>
 			</div>
 			    <% end %>
 		  </div>
 		</div>
-	
-	
-   </div>
-</div>
+ </div>

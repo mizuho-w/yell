@@ -14,6 +14,10 @@ class ReservationsController < ApplicationController
 	end
 
 	def destroy
+		@item = Item.find(params[:id])
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		redirect_to reserve_user(@item.id)
 	end
 
     def reserve_user
@@ -22,6 +26,14 @@ class ReservationsController < ApplicationController
     end
 
     def update
+    end
+
+    def following
+      @user = User.find(params[:id])
+    end
+
+    def followers
+      @user = User.find(params[:id])
     end
 
   private

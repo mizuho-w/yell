@@ -13,22 +13,25 @@
         </table>
 	</div>
 	<div class="co-8">
+		<!-- form_forはtableの外側に配置すること。 -->
+		<% @reservations.each do |reservation| %>
+		<%= form_for(reservation, url:reservation_path, html: {method: :patch}) do |f| %>
 		<table class="table">
-			<% @reservations.each do |reservation| %>
 			<tr>
 				<td><%= reservation.user.name %></td>
 
 			<!-- ステータスの更新（同期） -->
-			<%= form_for(reservation, url:reservation_path, html: {method: :patch}) do |f| %>
+			<div class="actions", data-turbolinks="false">
 				<td><%= f.select :status, [["配布済み", true],["未配布", false]] %></td>
 				<td><%= f.submit "更新", class:"btn btn-info" %></td>
-			</tr>
-			<% end %>
+			</div>
 			<!-- ここまでが範囲 -->
 
 				<td><%= link_to "削除", reservation_path(reservation), method: :delete, class:"btn btn-danger" %></td>
 			</tr>
-			<% end %>
 		</table>
+		<% end %>
+		<% end %>
+		<!-- form_forとじ -->
 	</div>
 </div>
