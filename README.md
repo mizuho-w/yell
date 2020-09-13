@@ -41,4 +41,4 @@ https://app.diagrams.net/?mode=google&gfw=1
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
->>>>>>> origin/master
+
