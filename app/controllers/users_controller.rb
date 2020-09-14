@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   
   def mypage
   	@user = User.find(params[:id])
+    @items = Item.where(user_id: current_user.id)
+    @reservations = Reservation.where(user_id: current_user.id)
   end
 
   def myitem

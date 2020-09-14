@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col-3">
+			<%= render 'users/profile', user: current_user %>
+	</div>
+	<div class="offset-1 col-8">
+		<h5>予約作品</h5>
+		<% @reservations.each do |reservation| %>
+	</div>
+</div>
