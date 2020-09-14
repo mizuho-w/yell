@@ -32,7 +32,11 @@
 				</div>
 			</div>
 
-			<p>タグ</p>
+			<div class="form-group">
+				<%= f.label :tag_name, "タグ（※スペースで区切る）", class: "col-xs-2 control-label" %>
+				<div class="col-xs-6">
+					<%= f.text_field :tag_name, class: "form-control explanation" %>
+			</div>
 
 			<div class="form-group">
 				<div class="dropdown">

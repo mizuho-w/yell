@@ -25,6 +25,11 @@ class ReservationsController < ApplicationController
   	    @reservations = Reservation.where(item_id: @item.id)
     end
 
+    def myitem
+      @user = User.find(params[:id])
+      @reservations = Reservation.where(user_id: current_user.id)
+    end
+
     def update
     end
 
@@ -43,6 +48,10 @@ class ReservationsController < ApplicationController
 
     def reservation_params
     	params.require(:reservation).permit(:user_id, :item_id, :receipt_date, :remark, :status)
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :image, :introduction, :is_deleted, :is_admin, :email)
     end
 
 end

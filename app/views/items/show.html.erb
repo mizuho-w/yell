@@ -8,7 +8,10 @@
 	<div class="col-7">
 		<%= @item.explanation %>
 
-		<p>tag</p>
+		<p>タグ</p>
+        <% @item.tags.each do |tag| %>
+        <%= link_to tag.name, search_path(tag_search:tag.id) %>
+        <% end %>
 
         <p>応援する人の名前</p>
 		<%= @item.artist_name %>
@@ -23,11 +26,23 @@
 		<%= @item.distribute_date %>
 
     </div>
-    <div class="col-4">
+
+
+<% if @item.user == current_user %>
+    <div class="col-3">
     	<%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
     </div>
 
-    <div class="offset-2 col-3">
+    <div class="col-2">
+        <%= form_for(@item, url:item_path, html: {method: :delete}) do |f| %>
+        <%= f.submit "削除する", class: "btn btn-outline-danger" %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="offset-5"></div>
+<% end %>
+
+    <div class="offset-1 col-3">
     	<%= link_to "予約状況を確認する", reserve_user_path(@item.id), class: "btn btn-primary" %>
     </div>
     <div class="col-3">

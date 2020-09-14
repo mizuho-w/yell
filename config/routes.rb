@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
 
+  get 'items/search' => 'items#search', as: 'search'
   resources :items
-  get 'items/search'
 
   get 'users/mypage/:id' => 'users#mypage', as:'mypage'
   get 'users/myitem/:id' => 'users#myitem', as:'myitem'
@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :users, only: [:edit, :update, :index]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

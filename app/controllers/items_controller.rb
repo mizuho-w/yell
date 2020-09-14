@@ -12,11 +12,19 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    tag_list = params[:item][:tag_name].split
     if @item.save
+      @item.save_tag(tag_list)
       redirect_to item_path(@item.id)
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to myitem_path(current_user.id)
   end
 
   def edit
@@ -35,6 +43,9 @@ class ItemsController < ApplicationController
   end
 
   def search
+    @tag = Tag.find(params[:tag_search])
+    @items = @tag.items.page(params[:page]).per(6)
+    @genres = Genre.all
   end
 
   private

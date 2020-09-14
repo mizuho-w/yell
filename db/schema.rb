@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_084959) do
+ActiveRecord::Schema.define(version: 2020_09_14_152133) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 2020_09_12_084959) do
     t.string "receipt_date"
     t.text "remark"
     t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_relationships", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

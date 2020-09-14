@@ -4,18 +4,22 @@
 	</div>
 
 	<div class="col-8">
+		<div class="sidebar_content">
 		<h3>人気のアイテム</h3>
-		<div class="">
-			<% @items.each do |item| %>
-			<div class="">
+		<div class="d-sm-flex">
+			<% @items.first(3).each do |item| %>
+			<div class="popular_item flex-sm-row ml-4 mt-3">
 				<%= link_to item_path(item) do %>
 				<%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
 				<% end %>
 			</div>
+		</div>
 			<% end %>
-		<div class="">
-			<% @items.each do |item| %>
-			<div class="">
+
+		<h3>新規投稿作品</h3>
+		<div class="d-sm-flex">
+			<% @items.last(3).each do |item| %>
+			<div class="new_post_item flex-sm-row ml-4 mt-3">
 				<%= link_to item_path(item) do %>
 				<%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
 				<% end %>
@@ -23,6 +27,7 @@
 			<% end %>
 		</div>
 		</div>
+	</div>
 	</div>
 
 	<div class="col-4"></div>
