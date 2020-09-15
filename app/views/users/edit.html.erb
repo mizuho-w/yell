@@ -1,41 +1,45 @@
 
  <h2>会員情報編集</h2>
- <%= form_for(@user) do |f| %>
- <div class="row">
- <div class="col-5">
-   <div class="field">
-   	<%= f.label :image %>
-		<%= f.attachment_field :image, class: "user_image" %>
-   </div>
-  </div>
-</div>
-
-<div class="row">
-<div class="col-7">
-   
-   <div class="field">
-   	<%= f.label :name, "ユーザーネーム", class: "col-xs-6 control-label" %>
-   	<%= f.text_field :name, class: "name" %>
-   </div>
-   
-   <div class="field">
-   	<%= f.label :introduction, "自己紹介文", class: "col-xs-6 control-label" %>
-   	<%= f.text_field :introduction, class: "introduction" %>
+ 
+<%= form_for(@user) do |f| %>
+   <div class="row">
+     <div class="col-5">
+       <div class="field">
+   	      <%= f.label :image, "プロフィール画像" %>
+		      <%= f.attachment_field :image, class: "user_image" %>
+       </div>
+     </div>
    </div>
 
-   <div class="field">
-   	<%= f.label :email, "メールアドレス", class: "col-xs-6 control-label" %>
-   	<%= f.text_field :email, class: "email" %>
+   <div class="row">
+     <div class="col-7">
+
+         <div class="field">
+   	       <%= f.label :name, "ユーザーネーム", class: "col-xs-6 control-label" %>
+   	       <%= f.text_field :name, class: "name" %>
+         </div>
+
+         <div class="field">
+   	       <%= f.label :introduction, "自己紹介文", class: "col-xs-6 control-label" %>
+   	       <%= f.text_field :introduction, class: "introduction" %>
+         </div>
+
+         <div class="field">
+   	       <%= f.label :email, "メールアドレス", class: "col-xs-6 control-label" %>
+   	       <%= f.text_field :email, class: "email" %>
+         </div>
+     </div>
    </div>
-</div>
 
-<div class="row">
-   <div class="col-4">
-     <%= link_to "退会する", destroy_user_session_path(current_user), method: :delete, class:"btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
+   <div class="row">
+     <div class="offset-6 col-3">
+        <%= link_to "退会する", destroy_user_session_path(current_user), method: :delete, class:"btn btn-outline-danger", data: {confirm: "本当に退会しますか？"} %>
+     </div>
+
+     <div class="col-3">
+    		<%= f.submit "変更を保存", class: "btn btn-outline-primary" %>
+     </div>
+
    </div>
 
-    <div class="offset-1 col-3">
-    		<%= f.submit "変更を保存", class: "btn btn-primary" %><% end %>
-    </div>
-
-</div>
+<% end %>

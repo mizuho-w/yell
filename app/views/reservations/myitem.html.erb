@@ -1,7 +1,9 @@
 <div class="row">
+
 	<div class="col-3">
 			<%= render 'users/profile', user: current_user %>
 	</div>
+
 	<div class="offset-1 col-8">
 		<h3>予約作品</h3>
 		<% @reservations.each do |reservation| %>
@@ -11,7 +13,8 @@
 				<%= attachment_image_tag(reservation.item,:img ,:fill,150,150,fallback:"noimg.jpg",size:"150x150") %>
 				<% end %>
 			</div>
-		<% end %>
 	    </div>
+	    <% end %>
 	</div>
+
 </div>

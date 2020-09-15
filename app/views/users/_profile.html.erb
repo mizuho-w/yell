@@ -1,35 +1,52 @@
 <table class="table">
-	<tr><%= attachment_image_tag @user, :image, :fill, 250, 250, fallback: "no_image.jpg", class: 'rounded-circle mb-5' %></tr>
-	<tr>
-		<th><%= @user.name %></th>
-	</tr>
-	<tr>
-		<th>フォロー<%= link_to following_path(@user) do %>
-          <%= @user.followings.count %><% end %></th>
+	  <tr>
+       <%= attachment_image_tag @user, :image, :fill, 250, 250, fallback: "no_image.jpg", class: 'rounded-circle mb-5' %>
+    </tr>
+	  <tr>
+		  <th>
+        <%= @user.name %>
+      </th>
+	  </tr>
+	  <tr>
+		  <th>
+         フォロー<%= link_to following_path(@user) do %>
+            <%= @user.followings.count %>
+          <% end %>
+      </th>
     </tr>
     <tr>
-		<th>フォロワー<%= link_to  follower_path(@user) do %>
+		  <th>
+        フォロワー<%= link_to  follower_path(@user) do %>
           <%= @user.followers.count %>
-            <% end %></th>
-	</tr>
-	<tr>
-   <% unless current_user == @user %>
-        <% if current_user.following?(@user) %>
-         <%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
-           <%= hidden_field_tag :follow_id, @user.id %>
-           <%= f.submit "フォローを外す", class: 'btn btn-primary btn-block' %>
-         <% end %>
-        <% else %>
-         <%= form_for(current_user.relationships.build) do |f| %>
-           <%= hidden_field_tag :follow_id, @user.id %>
-           <%= f.submit "フォローする", class: 'btn btn-success btn-block' %>
-         <% end %>
         <% end %>
+      </th>
+	  </tr>
+	  <tr>
+       <% unless current_user == @user %>
+          <% if current_user.following?(@user) %>
+            <%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
+             <%= hidden_field_tag :follow_id, @user.id %>
+             <%= f.submit "フォローを外す", class: 'btn btn-primary btn-block' %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.relationships.build) do |f| %>
+             <%= hidden_field_tag :follow_id, @user.id %>
+             <%= f.submit "フォローする", class: 'btn btn-success btn-block' %>
+            <% end %>
+          <% end %>
        <% end %>
-	</tr>
+	  </tr>
 </table>
+
+
 <div class="user_edit">
-  <% unless current_user == @user %>
-    <%= link_to "プロフィールを編集する", edit_user(@user.id), class: 'btn btn-outline-warning' %>
+  <% if current_user == @user %>
+    <%= link_to "プロフィールを編集する", edit_user_path(@user.id), class: 'btn btn-outline-warning' %>
+  <% end %>
+</div>
+
+<div class="genre_index">
+  <% if @user.is_admin == true %>
+    <%= link_to "ジャンルの一覧/編集", new_genre_path, class: 'btn btn-outline-info' %>
   <% end %>
 </div>

@@ -5,7 +5,7 @@
 
 	<div class="items d-sm-flex">
 		<% @items.each do |item| %>
-		<div class="items_view flex-sm-row ml-4 mt-3">
+		<div class="items_view flex-sm-row ml-4 mt-3 rounded border border-info">
 			<%= link_to item_path(item) do %>
 			<%=attachment_image_tag(item,:img ,:fill,300,300,fallback:"noimg.jpg",size:"200x200") %>
 		    <% end %>

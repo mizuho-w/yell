@@ -1,34 +1,74 @@
 <div class="row">
-	<div class="carousel slide" id="c1" date-ride="carousel">
-		
+  <div class="col-12">
+
+	<div class="carousel slide carousel-fade" id="c1" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#c1" data-slide-to="0" class="active"></li>
+			<li data-target="#c1" data-slide-to="1"></li>
+			<li data-target="#c1" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active"><img src="/assets/online.jpg" class="d-block w-100"></div>
+			<div class="carousel-item"><img src="/assets/live.jpg" class="d-block w-100"></div>
+			<div class="carousel-item"><img src="/assets/sumaho.jpg" class="d-block w-100"></div>
+		</div>
+		<a href="#c1" class="carousel-control-prev" data-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+			<span class="sr-only">前の画像へ</span>
+		</a>
+		<a href="#c1" class="carousel-control-next" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+			<span class="sr-only">次の画像へ</span>
+		</a>
 	</div>
 
-	<div class="col-8">
-		<div class="sidebar_content">
+  </div>
+</div>
+
+
+
+<div class="row">
+
+	<div class="col-8 mt-5">
+
 		<h3>人気のアイテム</h3>
-		<div class="d-sm-flex">
+		<div class="d-flex flex-row">
 			<% @items.first(3).each do |item| %>
-			<div class="popular_item flex-sm-row ml-4 mt-3">
+			  <div class="popular_item d-sm-flex ml-4 mt-3">
 				<%= link_to item_path(item) do %>
-				<%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
+				  <%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
 				<% end %>
-			</div>
-		</div>
+			  </div>
 			<% end %>
+		</div>
 
-		<h3>新規投稿作品</h3>
-		<div class="d-sm-flex">
+		<h3 class="mt-5">新規投稿作品</h3>
+		<div class="d-flex flex-row">
 			<% @items.last(3).each do |item| %>
-			<div class="new_post_item flex-sm-row ml-4 mt-3">
+			  <div class="new_post_item d-sm-flex ml-4 mt-3">
 				<%= link_to item_path(item) do %>
-				<%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
+				  <%= attachment_image_tag(item, :img, :fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
 				<% end %>
-			</div>
+			  </div>
 			<% end %>
 		</div>
+
+		<div class="text-right">
+		  	<%= link_to ">>もっと見る", items_path, class: "btn btn-link" %>
 		</div>
-	</div>
+
+
 	</div>
 
-	<div class="col-4"></div>
+	<div class="col-4 mt-5">
+		<h3>HOTワード</h3>
+		<div class="">
+			<% @items.last(5).each do |item| %>
+			  <div class="">
+			  	<%= item.artist_name %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+
 </div>
