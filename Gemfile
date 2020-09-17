@@ -74,3 +74,9 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+gem 'dotenv-rails'
+
+group :production do
+      gem 'mysql2'
+end
+
