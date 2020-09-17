@@ -1,53 +1,65 @@
 <div class="row">
-  <h2><%= @item.name %></h2>
+    <h2><%= @item.name %></h2>
 </div>
+
 <div class="row">
+
     <div class="col-4">
-			<%= attachment_image_tag(@item, :img, :fill, 300, 300) %>
+		<%= attachment_image_tag(@item, :img, :fill, 300, 300) %>
 	</div>
+
 	<div class="col-7">
 		<%= @item.explanation %>
 
 		<p>タグ</p>
-        <% @item.tags.each do |tag| %>
-        <%= link_to tag.name, search_path(tag_search:tag.id) %>
-        <% end %>
+         <% @item.tags.each do |tag| %>
+          <%= link_to tag.name, search_path(tag_search:tag.id) %>
+         <% end %>
 
         <p>応援する人の名前</p>
-		<%= @item.artist_name %>
+		  <%= @item.artist_name %>
 
 		<p>ジャンル名</p>
-		<%= @item.genre.name %>
+		  <%= @item.genre.name %>
 
 		<p>配布場所</p>
-		<%= @item.distribute_place %>
+		  <%= @item.distribute_place %>
 
 		<p>配布日時</p>
-		<%= @item.distribute_date %>
-
+		  <%= @item.distribute_date %>
     </div>
 
 
-<% if @item.user == current_user %>
-    <div class="col-3">
-    	<%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
-    </div>
+  <% if @item.user == current_user %>
+     
+     <div class="col-3">
+    	 <%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
+     </div>
 
-    <div class="col-2">
+     <div class="col-2">
         <%= form_for(@item, url:item_path, html: {method: :delete}) do |f| %>
-        <%= f.submit "削除する", class: "btn btn-outline-danger" %>
+         <%= f.submit "投稿削除", class: "btn btn-outline-danger" %>
         <% end %>
-    </div>
-<% else %>
-    <div class="offset-5"></div>
-<% end %>
+     </div>
 
-    <div class="offset-1 col-3">
+  <% else %>
+
+     <div class="offset-5"></div>
+
+  <% end %>
+
+  <div class="col-3">
     	<%= link_to "予約状況を確認する", reserve_user_path(@item.id), class: "btn btn-primary" %>
-    </div>
-    <div class="col-3">
+  </div>
+
+  <div class="col-2">
         <%= form_for(@reservation, url:reservation_path, html: {method: :post}) do |f| %>
-        <%= f.submit "予約する", class: "btn btn-primary" %>
+          <%= f.submit "予約する", class: "btn btn-primary" %>
         <% end %>
-    </div>
+  </div>
+
+  <div class="col-2">
+       <%= link_to "予約削除", reservation_path(@item.id), method: :delete, class: "btn btn-warning" %>
+  </div>
+
 </div>

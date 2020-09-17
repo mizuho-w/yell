@@ -15,15 +15,20 @@ class ReservationsController < ApplicationController
 
 	def destroy
 		@item = Item.find(params[:id])
-		@reservation = Reservation.find(params[:id])
-		@reservation.destroy
-		redirect_to reserve_user(@item.id)
+		@reservation = Reservation.find_by(user_id:current_user.id,item_id:@item.id)
+	 if @reservation.destroy
+      flash[:notice] = "予約は削除されました"
+		  redirect_to item_path(@item.id)
+   else
+      flash[:notice] = "予約削除に失敗しました"
+      render 'items/show'
+    end
 	end
 
-    def reserve_user
-  	    @item = Item.find(params[:id])
-  	    @reservations = Reservation.where(item_id: @item.id)
-    end
+    # def reserve_user
+  	 #    @item = Item.find(params[:id])
+  	 #    @reservations = Reservation.where(item_id: @item.id)
+    # end
 
     def myitem
       @user = User.find(params[:id])

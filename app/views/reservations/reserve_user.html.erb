@@ -1,9 +1,9 @@
 <div class="row">
-	   <div class="col-3">
+	<div class="col-3">
 	   	<table class="table">
 			<tr>
 				<td><%= attachment_image_tag(@item, :img, :fill, 200, 200) %></td>
-				</tr><br>
+			</tr><br>
 			<tr>
 				<td><%= @item.name %></td>
 			</tr><br>
@@ -12,13 +12,18 @@
 			</tr>
         </table>
 	</div>
-	<div class="co-8">
+	<div class="offset-1 col-8">
 		<!-- form_forはtableの外側に配置すること。 -->
-		<% @reservations.each do |reservation| %>
+	  <% @reservations.each do |reservation| %>
 		<%= form_for(reservation, url:reservation_path, html: {method: :patch}) do |f| %>
 		<table class="table">
+
 			<tr>
-				<td><%= reservation.user.name %></td>
+				<td>
+					  <%= link_to reservation.user.name, mypage_path(reservation.user.id) %>
+				</td>
+				<td></td>
+				<td></td>
 
 			<!-- ステータスの更新（同期） -->
 			<div class="actions", data-turbolinks="false">
@@ -31,7 +36,7 @@
 			</tr>
 		</table>
 		<% end %>
-		<% end %>
+	  <% end %>
 		<!-- form_forとじ -->
 	</div>
 </div>
