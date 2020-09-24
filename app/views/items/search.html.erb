@@ -3,7 +3,7 @@
 		<%= render 'genres/genre' %>
 	</div>
 
-<h3>検索：<%= @tag.name%></h3>
+<h3>検索：<%= @search_word %></h3>
 	<div class="items d-sm-flex">
 		<% @items.each do |item| %>
 		<div class="items_view flex-sm-row ml-4 mt-3">

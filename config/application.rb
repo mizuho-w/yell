@@ -17,5 +17,7 @@ module Yell
     # the framework and any gems in your application.
    #日本語化
     config.i18n.default_locale = :ja
+  #日本時間
+    config.time_zone = 'Tokyo'
   end
 end

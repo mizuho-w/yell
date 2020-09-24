@@ -65,7 +65,9 @@
 		<div class="">
 			<% @items.last(5).each do |item| %>
 			  <div class="">
+			  	<%= link_to search_path(name_search:item.artist_name) do %>
 			  	<%= item.artist_name %>
+			  	<% end %>
 			  </div>
 			<% end %>
 		</div>

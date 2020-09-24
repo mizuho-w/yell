@@ -43,15 +43,25 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @tag = Tag.find(params[:tag_search])
-    @items = @tag.items.page(params[:page]).per(6)
-    @genres = Genre.all
+    if params[:tag_search]
+      @tag = Tag.find(params[:tag_search])
+      @items = @tag.items.page(params[:page]).per(6)
+      @search_word = @tag.name
+    elsif params[:name_search]
+      @items = Item.where(artist_name: params[:name_search]).page(params[:page]).per(6)
+      @search_word = params[:name_search]
+    elsif params[:genre_search]
+      @genre = Genre.find(params[:genre_search])
+      @items = @genre.items.page(params[:page]).per(6)
+      @search_word = @genre.name
+    end
+      @genres = Genre.all
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:img, :name, :artist_name, :explanation, :genre_id, :tag_id, :status, :distribute_place, :distribute_date)
+    params.require(:item).permit(:img, :name, :artist_name, :explanation, :genre_id, :tag_id, :status, :distribute_place, :distribute_date, :distribute_date_fin)
   end
 
 end

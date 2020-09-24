@@ -74,7 +74,12 @@
 			</div>
 
 			<!-- まだ設定してない -->
-			<p>配布日時</p>
+			<div class="form-group">
+				<%= f.label :distribute_date, "配布日時", class: "col-xs-2 control-label" %>
+				<%= f.datetime_select :distribute_date, {}, class: 'form-control form-control-inline' %>
+				<%= f.label :distribute_date_fin, "終了日時", class: "col-xs-2 control-label" %>
+				<%= f.datetime_select :distribute_date_fin, {}, class: 'form-control form-control-inline' %>
+			</div>
 
 			<div class="form-group">
 	        	<div class="dropdown">

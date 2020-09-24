@@ -47,9 +47,6 @@ class ReservationsController < ApplicationController
     end
 
   private
-    def item_params
-   	    params.require(:item).permit(:img, :name, :artist_name, :explanation, :genre_id, :tag_id, :status, :distribute_place, :distribute_date)
-     end
 
     def reservation_params
     	params.require(:reservation).permit(:user_id, :item_id, :receipt_date, :remark, :status)

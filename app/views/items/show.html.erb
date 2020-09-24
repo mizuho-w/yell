@@ -1,5 +1,5 @@
 <div class="row">
-    <h2><%= @item.name %></h2>
+    <h2><%= @item.name %>
     <% if @item.favorited_by?(current_user) %>
             <%= link_to item_favorites_path(@item), method: :delete, remote: true do %>
              <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
@@ -11,6 +11,7 @@
             <%= @item.favorites.count %> 
             <% end %>
     <% end %>
+    </h2>
 </div>
 
 <div class="row">
@@ -37,8 +38,12 @@
 		  <%= @item.distribute_place %>
 
 		<p>配布日時</p>
-		  <%= @item.distribute_date %>
-    </div>
+		  <%= @item.distribute_date.strftime("%Y年%m月%d日 %-H時%-M分") %>
+
+
+    <p>終了日時</p>
+      <%= @item.distribute_date_fin.strftime("%Y年%m月%d日 %-H時%-M分") %>
+  </div>
 
 
   <% if @item.user == current_user %>
