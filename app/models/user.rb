@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
@@ -28,4 +29,8 @@ class User < ApplicationRecord
   end
 
   attachment :image
+
+  validates :name, presence: true
+  validates :name, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 250 }
 end

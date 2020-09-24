@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 	belongs_to :user
 
 	has_many :reservations, dependent: :destroy
+	has_many :favorites, dependent: :destroy
 
 	attachment :img
 
@@ -10,6 +11,10 @@ class Item < ApplicationRecord
     has_many :tags, through: :tag_relationships
 
     attr_accessor :tag_name
+
+    validates :name, presence: true
+    validates :explanation, presence: true
+    validates :explanation, length: { maximum: 600 }
 
 	def save_tag(sent_tags)
 		current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -25,4 +30,9 @@ class Item < ApplicationRecord
 			self.tags << new_post_tag
 		end
 	end
+
+	def favorited_by?(user)
+   	favorites.where(user_id: user.id).exists?
+   end
+   
 end

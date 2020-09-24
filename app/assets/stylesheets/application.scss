@@ -14,4 +14,17 @@
  *= require_self
  */
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
+.navbar{
+	background-color: #f7b022;
+}
+
+.navbar-brand{
+	font-family: nicoca;
+}
+
+.nav-item{
+	font-family: nicoca;
+}

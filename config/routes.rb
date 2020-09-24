@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   get 'items/search' => 'items#search', as: 'search'
-  resources :items
+
+  resources :items do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   get 'users/mypage/:id' => 'users#mypage', as:'mypage'
   get 'users/myitem/:id' => 'users#myitem', as:'myitem'
