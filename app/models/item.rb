@@ -15,6 +15,8 @@ class Item < ApplicationRecord
     validates :name, presence: true
     validates :explanation, presence: true
     validates :explanation, length: { maximum: 600 }
+    validates :distribute_date, presence: true
+    validates :distribute_date_fin, presence: true
 
 	def save_tag(sent_tags)
 		current_tags = self.tags.pluck(:name) unless self.tags.nil?

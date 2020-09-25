@@ -18,7 +18,7 @@
 @import "font-awesome";
 
 .navbar{
-	background-color: #f7b022;
+	background-color: #f0862e;
 }
 
 .navbar-brand{
@@ -27,4 +27,30 @@
 
 .nav-item{
 	font-family: nicoca;
+	.link{
+	text-decoration: none;
+    }
+    &:hover {
+        transform: scale(1.1) rotate(4deg);
+    }
+}
+
+body{
+	font-family: nicoca;
+	background-color: #fbefd4;
+}
+
+.hot_word{
+	margin-top: 20px;
+}
+
+.hot_word_list{
+	margin-bottom: 20px;
+	font-size: 25px;
+}
+
+.nav-link{
+	font-size: 20px;
+	color: #fbdc00;
+	text-decoration: none;
 }

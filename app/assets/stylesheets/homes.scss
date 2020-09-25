@@ -6,3 +6,13 @@
 .carousel-item {
 	height: 400px;
 }
+
+.more{
+	text-decoration: none;
+    }
+
+.post_item{
+	&:hover{
+		opacity: 0.6;
+	}
+}
