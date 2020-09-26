@@ -1,13 +1,23 @@
 <div class="row">
-  <h2>作品編集</h2>
-	<%= form_for(@item, html: {method: :put, class: "form-horizontal"}) do |f| %>
 
+  <div class="col-12">
+    <h2>作品編集</h2>
+  </div>
+
+</div>
+
+	<%= form_for(@item, html: {method: :put}) do |f| %>
+
+<div class="row">
        <div class="col-4">
 
 		    <div id="item-image">
                 <%= attachment_image_tag @item, :img, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
             </div>
+
+            <div>
 		        <%= f.attachment_field :img, class: "img" %>
+		    </div>
 
 		   <script>
                 $(function(){
@@ -27,63 +37,65 @@
 
 	   </div>
 
-	   <div class="col-8">
+	   <div class="offset-1 col-7">
 
-	     <div class="form-group">
-			 <%= f.label :name, "作品名", class: "control-label" %>
+	     <div class="form-group form-row">
+			 <%= f.label :name, "作品名", class: "control-label col-3" %>
 			    <div class="col-6">
 			 		<%= f.text_field :name, class: "form-control name" %>
 			 	</div>
 		 </div>
 
-		 <div class="form-group">
-			 <%= f.label :artist_name, "応援する人の名前", class: "col-xs-2 control-label" %>
+		 <div class="form-group form-row">
+			 <%= f.label :artist_name, "応援する人の名前", class: "col-3 control-label" %>
 				<div class="col-6">
 					<%= f.text_field :artist_name, class: "form-control artist_name" %>
 				</div>
 		 </div>
 
-		 <div class="form-group">
-			 <%= f.label :explanation, "作品説明", class: "col-xs-2 control-label" %>
+		 <div class="form-group form-row">
+			 <%= f.label :explanation, "作品説明", class: "col-3 control-label" %>
 				<div class="col-6">
-					<%= f.text_field :explanation, class: "form-control explanation" %>
+					<%= f.text_area :explanation, class: "form-control explanation" %>
 				</div>
 		 </div>
 
-		 <div class="form-group">
-				<%= f.label :tag_name, "タグ（※スペースで区切る）", class: "col-xs-2 control-label" %>
-				<div class="col-xs-6">
+		 <div class="form-group form-row">
+				<%= f.label :tag_name, "タグ", class: "col-3 control-label" %>
+				<div class="col-6">
 					<%= f.text_field :tag_name, class: "form-control explanation" %>
 			    </div>
 		 </div>
 
-		 <div class="form-group">
+		 <div class="form-group form-row">
+		 	<%= f.label :genre, "ジャンル", class: "control-label col-3" %>
 			<div class="dropdown">
-				 <%= f.label :genre, "ジャンル", class: "col-xs-2 control-label" %>
-				 	<div class="col-xs-6">
+				 	<div class="col-12">
 		        		<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
 		        	</div>
 	       	</div>
 		  </div>
 
-		  <div class="form-group">
-			<%= f.label :distribute_place, "配布場所", class: "col-xs-2 control-label" %>
-				<div class="col-xs-6">
+		  <div class="form-group form-row">
+			<%= f.label :distribute_place, "配布場所", class: "col-3 control-label" %>
+				<div class="col-6">
 					<%= f.text_field :distribute_place, class: "form-control distribute_place" %>
 				</div>
 		   </div>
 
-           <div class="form-group">
-				<%= f.label :distribute_date, "配布日時", class: "col-xs-2 control-label" %>
-				<%= f.datetime_select :distribute_date, {}, class: 'form-control form-control-inline' %>
-				<%= f.label :distribute_date_fin, "終了日時", class: "col-xs-2 control-label" %>
-				<%= f.datetime_select :distribute_date_fin, {}, class: 'form-control form-control-inline' %>
+           <div class="form-group form-row">
+				<%= f.label :distribute_date, "配布日時", class: "col-3" %>
+				<%= f.datetime_select :distribute_date, {} %>
 			</div>
+			<div class="form-group form-row">
+				<%= f.label :distribute_date_fin, "終了日時", class: "col-3 " %>
+				<%= f.datetime_select :distribute_date_fin, {} %>
+		   </div>
 
-			<div class="form-group">
+			<div class="form-group form-row">
+				<%= f.label :status, "公開設定", class: "col-3 control-label" %>
 	        	<div class="dropdown">
-		         　	<%= f.label :status, "公開設定", class: "col-xs-2 control-label" %>
-		         	<div class="col-xs-6">
+		         	<div class="col-6">
 		          		<%= f.select :status, [["公開", true],["未公開", false]], include_blank: "選択して下さい" %>
 		          	</div>
 	         	</div>
@@ -91,9 +103,11 @@
 
 		</div>
 
-		<div class="col-offset-9 col-md-3 submitbtn">
-			<%= f.submit "更新する", class: "btn btn-primary" %>
-     	</div>
+		<div class="offset-10 col-2 submitbtn">
+			<%= f.submit "更新する", class: "btn btn-outline-success" %>
 
-  <% end %>
+     	</div>
 </div>
+<% end %>
+
+
