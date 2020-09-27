@@ -33,7 +33,7 @@
 
    <div class="row">
      <div class="offset-6 col-3">
-        <%= link_to "退会する", destroy_user_session_path(current_user), method: :delete, class:"btn btn-outline-danger", data: {confirm: "本当に退会しますか？"} %>
+        <%= link_to "退会する", user_exit_path(current_user), method: :patch, class:"btn btn-outline-danger", data: {confirm: "本当に退会しますか？"} %>
      </div>
 
      <div class="col-3">

@@ -25,10 +25,10 @@ class ReservationsController < ApplicationController
     end
 	end
 
-    # def reserve_user
-  	 #    @item = Item.find(params[:id])
-  	 #    @reservations = Reservation.where(item_id: @item.id)
-    # end
+    def reserve_user
+  	    @item = Item.find(params[:id])
+  	    @reservations = Reservation.where(item_id: @item.id)
+    end
 
     def myitem
       @user = User.find(params[:id])
@@ -36,6 +36,9 @@ class ReservationsController < ApplicationController
     end
 
     def update
+      @reservation = Reservation.find(params[:id])
+      @reservation.update(reservation_params)
+      redirect_to reserve_user_path(@reservation.item.id)
     end
 
     def following

@@ -12,10 +12,10 @@
 			</tr>
         </table>
 	</div>
-	<div class="offset-1 col-8">
+	<div class="offset-1 col-8 pt-5">
 		<!-- form_forはtableの外側に配置すること。 -->
 	  <% @reservations.each do |reservation| %>
-		<%= form_for(reservation, url:reservation_path, html: {method: :patch}) do |f| %>
+		<%= form_for(reservation, url:reservation_path(reservation.id), html: {method: :patch}) do |f| %>
 		<table class="table">
 
 			<tr>

@@ -28,6 +28,10 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
   attachment :image
 
   validates :name, presence: true

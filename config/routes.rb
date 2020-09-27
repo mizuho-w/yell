@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users
+  devise_for :users,  controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
 
   get 'relationships/follower/:follow_id' => 'relationships#follower', as: 'follower'
   get 'relationships/following/:follow_id' => 'relationships#following', as: 'following'
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
+  patch 'users/exit/:id' => 'users#exit', as:'user_exit'
   resources :users, only: [:edit, :update, :index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

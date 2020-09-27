@@ -23,27 +23,44 @@
 	<div class="col-7">
 		<%= @item.explanation %>
 
-		<p>タグ</p>
+	<div class="row">
+
+    <p class="col-4">タグ</p>
+    <div class="col-8">
          <% @item.tags.each do |tag| %>
           <%= link_to tag.name, search_path(tag_search:tag.id) %>
          <% end %>
+    </div>
 
-    <p>応援する人の名前</p>
+    <p class="col-4">応援する人の名前</p>
+    <div class="col-8">
 		  <%= @item.artist_name %>
+    </div>
 
-		<p>ジャンル名</p>
+		<p class="col-4">ジャンル名</p>
+    <div class="col-8">
 		  <%= @item.genre.name %>
+    </div>
 
-		<p>配布場所</p>
+		<p class="col-4">配布場所</p>
+    <div class="col-8">
 		  <%= @item.distribute_place %>
+    </div>
 
-		<p>配布日時</p>
+		<p class="col-4">配布日時</p>
+    <div class="col-8">
 		  <%= @item.distribute_date.strftime("%Y年%m月%d日 %-H時%-M分") %>
+    </div>
 
 
-    <p>終了日時</p>
+    <p class="col-4">終了日時</p>
+    <div class="col-8">
       <%= @item.distribute_date_fin.strftime("%Y年%m月%d日 %-H時%-M分") %>
+    </div>
+
   </div>
+  
+</div>
 
 
   <% if @item.user == current_user %>

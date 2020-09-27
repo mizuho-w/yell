@@ -26,6 +26,15 @@ class UsersController < ApplicationController
   	end
   end
 
+  def exit
+    @user = User.find(current_user.id)
+    @user.is_deleted = true
+    @user.save
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
 private
  def user_params
  	params.require(:user).permit(:name, :image, :introduction, :is_deleted, :is_admin, :email)
