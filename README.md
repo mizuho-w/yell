@@ -32,6 +32,12 @@
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1c98mDq1O6e7oadARDlLsDQAZL6ASxP6Xsq92cCF6AjA/edit?usp=sharing>
 
+### アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1bZBISWV7lPNNaPHFy5oT4cEgGIUuHQnpdCE-2W2zM50/edit?usp=sharing
+
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/1aapN6tI_mOHuEECUd_kfNytR1Q_gpuRQr3cilaskzXc/edit?usp=sharing
+
 ###ワイヤーフレーム
 https://app.diagrams.net/?mode=google&gfw=1
 
