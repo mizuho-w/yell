@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all.page(params[:page]).per(6)
-    @genres = Genre.all
+    @items = Item.where(status:true).page(params[:page]).per(6)
+    @genres = Genre.where(is_active:true)
   end
 
   def new

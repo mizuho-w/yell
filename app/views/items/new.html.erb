@@ -71,7 +71,7 @@
 		 	<%= f.label :genre, "ジャンル", class: "control-label col-3" %>
 			<div class="dropdown">
 				 	<div class="col-12">
-		        		<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+		        		<%= f.collection_select :genre_id, Genre.where(is_active:true), :id, :name, include_blank: "選択して下さい" %>
 		        	</div>
 	       	</div>
 		  </div>

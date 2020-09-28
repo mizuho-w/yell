@@ -33,6 +33,14 @@ class Item < ApplicationRecord
 		end
 	end
 
+	def status_ja
+		if self.status == true
+			"公開"
+		else
+			"非公開"
+		end
+	end
+
 	def favorited_by?(user)
    	favorites.where(user_id: user.id).exists?
    end

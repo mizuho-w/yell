@@ -39,7 +39,9 @@
 
 		<p class="col-4">ジャンル名</p>
     <div class="col-8">
-		  <%= @item.genre.name %>
+      <% if @item.genre.is_active == true %>
+		    <%= @item.genre.name %>
+      <% end %>
     </div>
 
 		<p class="col-4">配布場所</p>
@@ -57,6 +59,13 @@
     <div class="col-8">
       <%= @item.distribute_date_fin.strftime("%Y年%m月%d日 %-H時%-M分") %>
     </div>
+
+  <% if @item.user == current_user %>
+    <p class="col-4">公開設定</p>
+    <div class="col-8">
+      <%= @item.status_ja %>
+    </div>
+  <% end %>
 
   </div>
   
