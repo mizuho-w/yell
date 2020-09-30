@@ -19,19 +19,25 @@
 		<table class="table">
 
 			<tr>
-				 <td>
+				 <td class="row">
+				 	<div class="col-2">
 					  <%= link_to reservation.user.name, mypage_path(reservation.user.id) %>
-				 </td>
-				 <td></td>
+					</div>
 
 			<!-- ステータスの更新（同期） -->
-			<div class="actions", data-turbolinks="false">
-				<td><%= f.select :status, [["配布済み", true],["未配布", false]] %></td>
-				<td><%= f.submit "更新", class:"btn btn-info" %></td>
-			</div>
+<!-- 			<div class="actions", data-turbolinks="false"> -->
+	                <div class="offset-3 col-2">
+                      <%= f.select :status, [["配布済み", true],["未配布", false]] %>
+                    </div>
+                    <div class="col-2">
+				      <%= f.submit "更新", class:"btn btn-info" %>
+				    </div>
 			<!-- ここまでが範囲 -->
-
-				<td><%= link_to "削除", reservation_path(reservation), method: :delete, class:"btn btn-danger" %></td>
+                    <div class="col-2">
+				      <%= link_to "削除", reservation_path(reservation), method: :delete, class:"btn btn-danger" %>
+				    </div>
+				      	
+				 </td>
 			</tr>
 		</table>
 		<% end %>
