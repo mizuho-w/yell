@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   
   def mypage
   	@user = User.find(params[:id])
-    @items = Item.where(user_id: current_user.id)
-    @reservations = Reservation.where(user_id: current_user.id)
+    @items = Item.where(user_id: @user.id).order(created_at: "DESC")
+    @reservations = Reservation.where(user_id: @user.id)
   end
 
   def myitem
   	@user = User.find(params[:id])
-  	@items = Item.where(user_id: current_user.id)
+  	@items = Item.where(user_id: @user.id)
   end
 
   def edit

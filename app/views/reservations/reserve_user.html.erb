@@ -12,18 +12,17 @@
 			</tr>
         </table>
 	</div>
-	<div class="offset-1 col-8 pt-5">
+	<div class="col-9 pt-5">
 		<!-- form_forはtableの外側に配置すること。 -->
 	  <% @reservations.each do |reservation| %>
 		<%= form_for(reservation, url:reservation_path(reservation.id), html: {method: :patch}) do |f| %>
 		<table class="table">
 
 			<tr>
-				<td>
+				 <td>
 					  <%= link_to reservation.user.name, mypage_path(reservation.user.id) %>
-				</td>
-				<td></td>
-				<td></td>
+				 </td>
+				 <td></td>
 
 			<!-- ステータスの更新（同期） -->
 			<div class="actions", data-turbolinks="false">

@@ -1,19 +1,23 @@
 <div class="row">
-	<div class="bg-white radius genre-index pd-20">
+	<div class="col-12">
+		<h3>検索：<%= @search_word %></h3>
+	</div>
+	<div class="co-3 bg-white radius genre-index pd-20">
 		<%= render 'genres/genre' %>
 	</div>
 
-<h3>検索：<%= @search_word %></h3>
-	<div class="items d-sm-flex">
+
+	<div class="col-9 items d-sm-flex">
 		<% @items.each do |item| %>
-		<div class="items_view flex-sm-row ml-4 mt-3">
-			<%= link_to item_path(item) do %>
+		 <%= link_to item_path(item) do %>
+		  <div class="items_view flex-sm-row ml-4 mt-3">
 			<%=attachment_image_tag(item,:img ,:fill,300,300,fallback:"noimg.jpg",size:"200x200") %>
-		    <% end %>
-		</div>
+		  </div>
+		 <% end %>
 		<% end %>
 	</div>
 </div>
-<div class="col-md-offset-10">
+
+<div class="offset-10">
 	<%= paginate @items %>
 </div>

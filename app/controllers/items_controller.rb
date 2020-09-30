@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.where(status:true).page(params[:page]).per(6)
+    @items = Item.where(status:true).page(params[:page]).per(6).order(created_at: "DESC")
+    else
     @genres = Genre.where(is_active:true)
   end
 
