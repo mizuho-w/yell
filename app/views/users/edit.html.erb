@@ -1,45 +1,61 @@
 
- <h2>会員情報編集</h2>
+<h2>-会員情報編集-</h2>
  
 <%= form_for(@user) do |f| %>
    <div class="row">
      <div class="col-5">
+
        <div class="field">
    	      <%= f.label :image, "プロフィール画像" %>
+          <%= attachment_image_tag @user, :image, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
 		      <%= f.attachment_field :image, class: "user_image" %>
        </div>
+
+       <script>
+                $(function(){
+              // inputのidから情報の取得
+                $('.img').on('change', function (e) {
+              // ここから既存の画像のurlの取得
+                   var reader = new FileReader();
+                   reader.onload = function (e) {
+                       $(".img-square").attr('src', e.target.result);
+                   }
+              // ここまで
+                   reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+              });
+              });
+       </script>
+     
+     </div>
+
+     <div class="col-7 edit-form">
+
+         <div class="field pt-5 form-row">
+   	       <%= f.label :name, "ユーザーネーム", class: "control-label col-sm-4" %>
+   	       <%= f.text_field :name, class: "name col-sm-7" %>
+         </div>
+
+         <div class="field pt-5 form-row">
+   	       <%= f.label :introduction, "自己紹介文", class: "control-label col-sm-4" %>
+   	       <%= f.text_area :introduction, class: "introduction col-sm-7" %>
+         </div>
+
+         <div class="field pt-5 form-row">
+   	       <%= f.label :email, "メールアドレス", class: "control-label col-sm-4" %>
+   	       <%= f.text_field :email, class: "email col-sm-7" %>
+         </div>
+
      </div>
    </div>
 
-   <div class="row">
-     <div class="col-7">
 
-         <div class="field">
-   	       <%= f.label :name, "ユーザーネーム", class: "col-xs-6 control-label" %>
-   	       <%= f.text_field :name, class: "name" %>
-         </div>
-
-         <div class="field">
-   	       <%= f.label :introduction, "自己紹介文", class: "col-xs-6 control-label" %>
-   	       <%= f.text_field :introduction, class: "introduction" %>
-         </div>
-
-         <div class="field">
-   	       <%= f.label :email, "メールアドレス", class: "col-xs-6 control-label" %>
-   	       <%= f.text_field :email, class: "email" %>
-         </div>
-     </div>
-   </div>
-
-   <div class="row">
-     <div class="offset-6 col-3">
+  <div class="row pt-4">
+     <div class="offset-8">
         <%= link_to "退会する", user_exit_path(current_user), method: :patch, class:"btn btn-outline-danger", data: {confirm: "本当に退会しますか？"} %>
      </div>
-
-     <div class="col-3">
-    		<%= f.submit "変更を保存", class: "btn btn-outline-primary" %>
+     <div class="col-2">
+        <%= f.submit "変更を保存", class: "btn btn-outline-primary" %>
      </div>
-
-   </div>
+  </div>
 
 <% end %>

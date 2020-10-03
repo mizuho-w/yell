@@ -41,12 +41,12 @@
 
 <div class="user_edit">
   <% if current_user == @user %>
-    <%= link_to "プロフィールを編集する", edit_user_path(@user.id), class: 'btn btn-outline-warning' %>
+    <%= link_to "プロフィールを編集する", edit_user_path(@user.id), class: 'btn btn-outline-warning btn-block' %>
   <% end %>
 </div>
 
-<div class="genre_index">
+<div class="genre_index pt-2">
   <% if @user.is_admin == true %>
-    <%= link_to "ジャンルの一覧/編集", new_genre_path, class: 'btn btn-outline-info' %>
+    <%= link_to "ジャンルの一覧/編集", new_genre_path, class: 'btn btn-outline-info btn-block' %>
   <% end %>
 </div>
