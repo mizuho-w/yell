@@ -22,9 +22,9 @@
 				<h5>投稿作品</h5>
 				<div class="my_post_item d-flex flex-row ml-4 mt-3">
 					<% @items.last(4).each do |item| %>
-						<div class="d-sm-flex ml-4">
+						<div class="d-sm-flex ml-4 border border-warning">
 							<%= link_to item_path(item) do %>
-						 		<%= attachment_image_tag(item,:img ,:fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
+						 		<%= attachment_image_tag(item,:img ,:fill,130,130,fallback:"noimg.jpg",size:"130x130") %>
 							<% end %>
 						</div>
 					<% end %>
@@ -41,11 +41,11 @@
 	    <div class="row mt-3">
 			<div class="col-12">
 				<h5>予約作品</h5>
-				<div class="my_post_item d-flex flex-row ml-4 mt-3">
+				<div class="my_post_item d-flex flex-row ml-4 mt-3 ">
 					<% @reservations.last(4).each do |reservation| %>
-						<div class="d-sm-flex ml-4">
+						<div class="d-sm-flex ml-4 border border-warning">
 							<%= link_to item_path(reservation.item.id) do %>
-								<%= attachment_image_tag(reservation.item,:img ,:fill,100,100,fallback:"noimg.jpg",size:"100x100") %>
+								<%= attachment_image_tag(reservation.item,:img ,:fill,130,130,fallback:"noimg.jpg",size:"130x130") %>
 							<% end %>
 					  	</div>
 	            	<% end %>

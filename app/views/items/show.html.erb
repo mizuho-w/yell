@@ -78,17 +78,17 @@
 
   <% if @item.user == current_user %>
      
-     <div class="col-3">
+     <div class="#">
     	 <%= link_to "投稿を編集する", edit_item_path(@item), class: "btn btn-primary" %>
      </div>
 
-     <div class="col-2">
+     <div class="pl-2">
         <%= form_for(@item, url:item_path, html: {method: :delete}) do |f| %>
          <%= f.submit "投稿削除", class: "btn btn-outline-danger" %>
         <% end %>
      </div>
 
-     <div class="col-3">
+     <div class="offset-3">
        <%= link_to "予約状況を確認する", reserve_user_path(@item.id), class: "btn btn-primary" %>
      </div>
 
@@ -100,13 +100,13 @@
 
 
 
-  <div class="col-2">
+  <div class="offset-1">
         <%= form_for(@reservation, url:reservation_path, html: {method: :post}) do |f| %>
           <%= f.submit "予約する", class: "btn btn-primary" %>
         <% end %>
   </div>
 
-  <div class="col-2">
+  <div class="pl-2">
        <%= link_to "予約削除", reservation_path(@item.id), method: :delete, class: "btn btn-warning" %>
   </div>
 
