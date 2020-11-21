@@ -41,6 +41,10 @@ https://docs.google.com/spreadsheets/d/1aapN6tI_mOHuEECUd_kfNytR1Q_gpuRQr3cilask
 ###ワイヤーフレーム
 https://app.diagrams.net/?mode=google&gfw=1
 
+###ER図
+
+###
+
 ## 開発環境
 - OS：macOS Catalina
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
